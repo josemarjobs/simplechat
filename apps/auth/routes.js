@@ -9,7 +9,7 @@ routes = function(app) {
   });
   app.get("/", function(req, res) {
     return res.render("index", {
-      title: "We are having fun with node"
+      title: "Simple Chat | We are having fun with node"
     });
   });
   return app.post("/sessions", function(req, res) {

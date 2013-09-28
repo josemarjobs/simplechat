@@ -5,7 +5,7 @@ routes = (app) ->
 	
 	app.get "/", (req, res) ->
 		res.render "index", 
-			title: "We are having fun with node"
+			title: "Simple Chat | We are having fun with node"
 
 	app.post "/sessions", (req, res) ->
 		res.redirect "/"
