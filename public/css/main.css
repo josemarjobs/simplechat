@@ -1,0 +1,40 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+header{
+	width: 100%;
+}
+input[name=message]{
+	width: 100%;
+	padding: 4px;
+}
+.action .send{
+	padding:6px 40px;
+}
+.container, .container>section{
+	height: 550px;
+}
+.container>section>.messages{
+	background: #FAFAFA;
+	padding: 0 10px;
+	height: 90%;
+	overflow-y:scroll;
+	margin-bottom: 10px;
+}
+.messages .message:last-child{
+	border: none;
+}
+.messages .message{
+	margin: 20px 0px; 
+	color:#111;
+	border-bottom: 7px solid #E6E6E6;
+}
+.messages .message .user .data{
+	display: block;
+	font-size:8px;
+}
+.messages .message .user{
+	font-size: 17px;
+	font-weight: bold;
+}

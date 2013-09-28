@@ -26,6 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+// production only
+if ('production' == app.get('env')) {
+  console.log("Production Env");
+}
 
 app.get('/', routes.index);
 app.get('/users', user.list);
