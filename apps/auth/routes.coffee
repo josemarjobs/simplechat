@@ -1,0 +1,13 @@
+routes = (app) ->
+	app.get "/login", (req, res) ->
+		res.render "login", 
+			login: "Having Fun with node"
+	
+	app.get "/", (req, res) ->
+		res.render "index", 
+			title: "We are having fun with node"
+
+	app.post "/sessions", (req, res) ->
+		res.redirect "/"
+
+module.exports = routes

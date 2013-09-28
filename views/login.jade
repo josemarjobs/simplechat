@@ -2,7 +2,7 @@ extend layout
 
 block content
 	div#container
-		form(class="form-signin")
+		form(class="form-signin", action="/sessions", method="post")
 			h2(class="form-signin-heading") Before you start
 			input(type="text",class="form-control",name="name",placeholder="Any name",autofocus="autofocus")
 			input(type="email",class="form-control",name="email",placeholder="Email address, OPTIONAL")

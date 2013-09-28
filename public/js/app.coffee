@@ -8,8 +8,9 @@ window.getDate = ->
 		"#{curr_date}/#{curr_month}/#{curr_year} #{curr_hour}:#{curr_min}"
 
 jQuery ->
-
-	template = _.template(($ "#messageTemplate").html()); 
+	template = null
+	($ "#messageTemplate").load "/templates/message.html", ->
+		template = _.template ($ "#messageTemplate").html()
 
 	($ "#form").submit (evt) ->
 		evt.preventDefault()
@@ -20,6 +21,7 @@ jQuery ->
 			name: "Josemar"
 			message: ($ "#text").val()
 			date: getDate()
+		console.log template(data)
 		($ "#messages-list").append(template(data))
 		($ "#text").val("")
 		$("#messages-list").scrollTop($("#messages-list")[0].scrollHeight)

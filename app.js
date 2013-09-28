@@ -4,8 +4,6 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
@@ -31,8 +29,7 @@ if ('production' == app.get('env')) {
   console.log("Production Env");
 }
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+require("./apps/auth/routes")(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

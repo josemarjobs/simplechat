@@ -12,7 +12,10 @@ window.getDate = function() {
 
 jQuery(function() {
   var template;
-  template = _.template(($("#messageTemplate")).html());
+  template = null;
+  ($("#messageTemplate")).load("/templates/message.html", function() {
+    return template = _.template(($("#messageTemplate")).html());
+  });
   return ($("#form")).submit(function(evt) {
     var data;
     evt.preventDefault();
@@ -24,6 +27,7 @@ jQuery(function() {
       message: ($("#text")).val(),
       date: getDate()
     };
+    console.log(template(data));
     ($("#messages-list")).append(template(data));
     ($("#text")).val("");
     return $("#messages-list").scrollTop($("#messages-list")[0].scrollHeight);
