@@ -1,7 +1,7 @@
 routes = (app) ->
 	app.get "/login", (req, res) ->
 		res.render "login", 
-			login: "Having Fun with node"
+			title: "Login | Having Fun with node"
 	
 	app.get "/", (req, res) ->
 		res.render "index", 

@@ -4,7 +4,7 @@ var routes;
 routes = function(app) {
   app.get("/login", function(req, res) {
     return res.render("login", {
-      login: "Having Fun with node"
+      title: "Login | Having Fun with node"
     });
   });
   app.get("/", function(req, res) {
