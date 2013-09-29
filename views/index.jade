@@ -7,11 +7,12 @@ block content
 		header
 			h1 Simple Chat App
 		section
-			section(id="messages-list", class="messages row")
+			section(id="messages-list", class="messages col-sm-9")
 				
-
-			form(action="#", id="form")
-				div.row
-					div(class="col-sm-12")
-						input(type="text", name="message", id="text")
+			section(id="users", class="col-sm-3")	
+				h2 Users
+			section.row
+				form(action="#", id="form")
+						div(class="col-sm-9")
+							input(type="text", name="message", id="text")
 					
