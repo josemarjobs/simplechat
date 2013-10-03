@@ -7,7 +7,7 @@ window.getDate = ->
 		curr_min  	= d.getMinutes()
 		"#{curr_date}/#{curr_month}/#{curr_year} #{curr_hour}:#{curr_min}"
 
-window.socket = io.connect "http://localhost"
+window.socket = io.connect "http://54.200.16.130"
 console.log socket
 
 jQuery ->
