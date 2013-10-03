@@ -10,7 +10,7 @@ window.getDate = function() {
   return "" + curr_date + "/" + curr_month + "/" + curr_year + " " + curr_hour + ":" + curr_min;
 };
 
-window.socket = io.connect("http://localhost:3000");
+window.socket = io.connect("http://localhost");
 
 console.log(socket);
 
