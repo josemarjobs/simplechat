@@ -8,6 +8,7 @@ window.getDate = ->
 		"#{curr_date}/#{curr_month}/#{curr_year} #{curr_hour}:#{curr_min}"
 
 window.socket = io.connect "http://54.200.16.130"
+# window.socket = io.connect "http://localhost:3000"
 console.log socket
 
 jQuery ->
@@ -25,7 +26,7 @@ jQuery ->
 		if "" is ($ "#text").val()
 			return
 		data = 
-			name: "Josemar"
+			name: ($ "#username").val()
 			message: ($ "#text").val()
 			date: getDate()
 		socket.emit "msg", data

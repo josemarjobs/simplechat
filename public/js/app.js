@@ -32,7 +32,7 @@ jQuery(function() {
       return;
     }
     data = {
-      name: "Josemar",
+      name: ($("#username")).val(),
       message: ($("#text")).val(),
       date: getDate()
     };

@@ -5,7 +5,7 @@ block content
 
 	section.container
 		header
-			h1 Simple Chat App
+			h1 Simple Chat App: #{user}
 		section
 			section(id="messages-list", class="messages col-xs-9")
 				
@@ -13,6 +13,7 @@ block content
 				h2 Users
 			section.row
 				form(action="#", id="form")
-						div(class="col-xs-9")
-							input(type="text", name="message", id="text")
+					input(type="hidden", value="#{user}", name="user", id="username")
+					div(class="col-xs-9")
+						input(type="text", name="message", id="text")
 					
