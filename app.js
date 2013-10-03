@@ -6,7 +6,7 @@ require("coffee-script");
 var express = require('express');
 var http = require('http');
 var path = require('path');
-
+var clients = [];
 var app = express();
 
 // all environments
@@ -31,6 +31,17 @@ if ('production' == app.get('env')) {
 
 require("./apps/auth/routes")(app);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+var io = require("socket.io").listen(server);
+io.sockets.on("connection", function(socket) {
+	clients.push(socket);
+	socket.on("msg", function(data) {
+		console.log(data);
+		clients.forEach(function(client) {
+			client.emit("getMsg", data);
+		});
+	});
+});
+server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

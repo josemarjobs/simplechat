@@ -10,11 +10,20 @@ window.getDate = function() {
   return "" + curr_date + "/" + curr_month + "/" + curr_year + " " + curr_hour + ":" + curr_min;
 };
 
+window.socket = io.connect("http://localhost:3000");
+
+console.log(socket);
+
 jQuery(function() {
   var template;
   template = null;
   ($("#messageTemplate")).load("/templates/message.html", function() {
     return template = _.template(($("#messageTemplate")).html());
+  });
+  socket.on('getMsg', function(data) {
+    console.log(template(data));
+    ($("#messages-list")).append(template(data));
+    return $("#messages-list").scrollTop($("#messages-list")[0].scrollHeight);
   });
   return ($("#form")).submit(function(evt) {
     var data;
@@ -27,9 +36,7 @@ jQuery(function() {
       message: ($("#text")).val(),
       date: getDate()
     };
-    console.log(template(data));
-    ($("#messages-list")).append(template(data));
-    ($("#text")).val("");
-    return $("#messages-list").scrollTop($("#messages-list")[0].scrollHeight);
+    socket.emit("msg", data);
+    return ($("#text")).val("");
   });
 });
