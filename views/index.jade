@@ -9,11 +9,30 @@ block content
 		section
 			section(id="messages-list", class="messages col-xs-9")
 				
-			section(id="users", class="col-xs-3")	
-				h2 Users
+			section(id="users", class="col-xs-3")
+				div.panel(class="panel-default")
+					div(class="panel-heading")	
+						h2 Online
+					ul.list-group
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+						li.list-group-item: a(href="#") Usuario 1
+						li.list-group-item: a(href="#") Usuario 2
+
 			section.row
 				form(action="#", id="form")
 					input(type="hidden", value="#{user}", name="user", id="username")
 					div(class="col-xs-9")
 						input(type="text", name="message", id="text")
-					

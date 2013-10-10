@@ -3,8 +3,22 @@ body{
 	padding: 0;
 }
 #users{
-	background: #F5BCA9;
 	height: 90%;
+}
+#users h2{
+	padding: 0;
+	margin: 0;
+}
+#users>.panel{
+	max-height: 100%;
+	overflow-y: scroll; 
+}
+#users li.list-group-item:hover{
+	background: #FAFAFA;
+}
+#users li.list-group-item a{
+	text-decoration: none;
+	display: block;
 }
 header{
 	width: 100%;
