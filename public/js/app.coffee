@@ -7,11 +7,13 @@ window.getDate = ->
 		curr_min  	= d.getMinutes()
 		"#{curr_date}/#{curr_month}/#{curr_year} #{curr_hour}:#{curr_min}"
 
-window.socket = io.connect "http://54.200.16.130"
-# window.socket = io.connect "http://localhost:3000"
+# window.socket = io.connect "http://54.200.16.130"
+window.socket = io.connect "http://localhost:3000"
 console.log socket
 
 jQuery ->
+	socket.emit 'setName', ($ "#username").text()
+
 	template = null
 	($ "#messageTemplate").load "/templates/message.html", ->
 		template = _.template ($ "#messageTemplate").html()
@@ -26,7 +28,7 @@ jQuery ->
 		if "" is ($ "#text").val()
 			return
 		data = 
-			name: ($ "#username").val()
+			name: ($ "#username").text()
 			message: ($ "#text").val()
 			date: getDate()
 		socket.emit "msg", data

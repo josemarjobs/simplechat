@@ -1,3 +1,6 @@
+User = require "../../models/user"
+
+
 restrict = (req, res, next) ->
 	if req.session.currentUser
 		next()
@@ -21,4 +24,5 @@ routes = (app) ->
   app.del '/sessions', (req, res) ->
     req.session.regenerate (err) ->
       res.redirect '/login'
+
 module.exports = routes

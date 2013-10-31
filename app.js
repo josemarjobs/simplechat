@@ -35,9 +35,33 @@ if ('production' == app.get('env')) {
 
 require("./apps/auth/routes")(app);
 
+var mongoose = require("mongoose");
+mongoose.connect('mongodb://localhost/simplechat');
+var User = require("./models/user");
+
 var server = http.createServer(app);
 var io = require("socket.io").listen(server);
 io.sockets.on("connection", function(socket) {
+
+	socket.on("setName", function(name){
+		socket.set('nickname', name);
+		socket.emit('ready', name);
+	});
+
+	socket.on("ready", function(name) {
+		new User({username: name}).save(function(err, doc) {
+			if (err) {console.log(err);}
+		});
+	});
+
+	socket.on("disconnect", function() {
+		socket.get("nickname", function(err, name) {
+			User.findOneAndRemove({username: name}, function(err) {
+				console.log(name+" has disconnected");
+			});
+		});
+	});
+
 	clients.push(socket);
 	socket.on("msg", function(data) {
 		console.log(data);

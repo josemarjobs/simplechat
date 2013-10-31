@@ -10,12 +10,13 @@ window.getDate = function() {
   return "" + curr_date + "/" + curr_month + "/" + curr_year + " " + curr_hour + ":" + curr_min;
 };
 
-window.socket = io.connect("http://54.200.16.130");
+window.socket = io.connect("http://localhost:3000");
 
 console.log(socket);
 
 jQuery(function() {
   var template;
+  socket.emit('setName', ($("#username")).text());
   template = null;
   ($("#messageTemplate")).load("/templates/message.html", function() {
     return template = _.template(($("#messageTemplate")).html());
@@ -32,7 +33,7 @@ jQuery(function() {
       return;
     }
     data = {
-      name: ($("#username")).val(),
+      name: ($("#username")).text(),
       message: ($("#text")).val(),
       date: getDate()
     };
